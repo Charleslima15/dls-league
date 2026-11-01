@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-display: var(--font-display-src), "Arial Narrow", sans-serif;
+  --font-sans: var(--font-body-src), system-ui, sans-serif;
+  --color-turf: #0d3526;
+  --color-chalk: #f1efe7;
+  --color-gold: #ffc531;
+  --color-redcard: #ef5b4b;
+  --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-sans: "Figtree", system-ui, sans-serif;
+}
+
+/* kept so the Results/Fixtures pages pick up the new look */
+:root {
+  --bg: #0d3526;
+  --card: rgba(0, 0, 0, 0.25);
+  --line: rgba(241, 239, 231, 0.14);
+  --muted: rgba(241, 239, 231, 0.62);
+  --accent: #ffc531;
+}
+
+body {
+  background: var(--color-turf);
+  color: var(--color-chalk);
+}
+
+/* mown pitch stripes + floodlight glow */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.03) 0 56px,
+      transparent 56px 112px
+    ),
+    radial-gradient(80% 50% at 50% 0%, rgba(255, 255, 255, 0.1), transparent 70%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.01ms !important;
+  }
+}
